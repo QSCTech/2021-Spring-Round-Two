@@ -4,7 +4,7 @@
 
 ## 任务背景
 
-![img](https://uploader.shimo.im/f/Mj8yru7ca13ZbKYL.jpeg!thumbnail) 
+![gold_miner_pic](https://uploader.shimo.im/f/Mj8yru7ca13ZbKYL.jpeg!thumbnail) 
 
 Baby Switch 闲的没事就喜欢逛b站。
 
@@ -12,7 +12,7 @@ Baby Switch 闲的没事就喜欢逛b站。
 
 他大受震撼，于是准备打开 4399 来一局精彩刺激的黄金矿工，结果……
 
- ![img](https://uploader.shimo.im/f/mZD4AmbXlgZtpVjO.png!thumbnail) 造成 Baby Switch 不能使用他最心爱的浏览器游玩黄金矿工的原因，是：[https://docs.microsoft.com/en-us/lifecycle/announcements/update-adobe-flash-support ](https://docs.microsoft.com/en-us/lifecycle/announcements/update-adobe-flash-support)
+ ![error_please_download_360_or_sogou](https://uploader.shimo.im/f/mZD4AmbXlgZtpVjO.png!thumbnail) 造成 Baby Switch 不能使用他最心爱的浏览器游玩黄金矿工的原因，是：[https://docs.microsoft.com/en-us/lifecycle/announcements/update-adobe-flash-support ](https://docs.microsoft.com/en-us/lifecycle/announcements/update-adobe-flash-support)
 
 扯远了，让我们回到正题。
 
