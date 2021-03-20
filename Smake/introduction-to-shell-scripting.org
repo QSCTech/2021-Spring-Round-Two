@@ -1,4 +1,3 @@
-#+Title: Introduction to Shell Scripting
 #+Author: Allosaurus
 #+Email: dinoallo@zju.edu.cn / dinoallosaurus1111@gmail.com
 
