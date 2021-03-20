@@ -1,0 +1,300 @@
+#+Title: Introduction to Shell Scripting
+#+Author: Allosaurus
+#+Email: dinoallo@zju.edu.cn / dinoallosaurus1111@gmail.com
+
+* Introduction to Shell Scripting
+* Review of Shells
+We are talking about languages here... Not the applications.
+ - POSIX
+ - Bash
+ - Zsh
+ - And more...
+* POSIX Shell
+** POSIX
+   - POSIX: A group of *standards* that maintains the compatibility
+     between OSs.
+** POSIX compliant shells
+   - ksh(the POSIX standard!)
+   - dash
+   - bash(while invoking with =#!/bin/sh=)
+   - Reference: [[https://pubs.opengroup.org/onlinepubs/9699919799/][POSIX Shell Specifications]]
+   - *NOTICE* that zsh is not really POSIX compaliant, but it's able to
+    emulate POSIX shells.
+* It's not introduction to Bash scripting
+  - Bash scripting doesn't equal to shell scripting itself.
+  - Avoid this:
+#+begin_src shell
+#!/bin/sh
+# Bash only code below...
+#+end_src
+  - You MUST learn the "standard" before learning extensions.
+  - If you need to know more about Bash, a good reference [[https://tldp.org/LDP/abs/html/index.html][here]].
+* How we execute a script
+Imagine we have a file called script and we would like to execute it.
+ -  =./script=
+ -  =sh script=
+ -  =source=  /  =.= (bash only!!!)
+ - Question: What is the difference between these three? ;D
+* (POSIX) Shell, the language
+  - Abandon all your previous knowledge of programming languages and start from scratch.
+  - Because if you don't, you will have lots of questions...
+* Shebang!
+ - A *shebang* is a sequence of characters starting with a number
+   sign('=#=') followed by an exclamation mark('=!='), i.e =#!/bin/sh=.
+ - If the file is an *executable* and it has a shebang, the loader will
+   use the program specified by the shebang as the *interpreter* of
+   this file.
+** An example
+ - =myscript.sh= has =#!/bin/bash=, meaning that it uses Bash
+   as the interpreter. So when you execute it with =./myscript.sh= , it
+   equals to execute =bash myscript.sh=.
+ - Question: What if we don't make the file an executable? If we just
+   run =sh myscript.sh=, is the shebang still required?
+** =type=
+   - =type= writes a description of a command. It indicates how each
+     arguments will be interpreted.
+   - =type= is not a POSIX command but almost every shell used nowadays
+     has it built-in.
+   - It's useful when checking if a command exists.
+#+begin_src sh
+type export
+#+end_src
+** =command=
+   - Another command to check if a command exists is =command=:
+#+begin_src sh
+command -v type
+command -v nonexistingcommand
+#+end_src
+
+#+begin_src sh
+command -v man
+command -v echo
+command -v notacommand
+#+end_src
+
+* Literals
+  - What you see. You can think of them as strings.
+  - We use =''= or =""= to make an expression a literal. This is called
+    *quoting*. For example: "Hello world!" , "11", "a"...
+  - Some *special characters* have their own meanings in Shell. For example:
+    =|&;<>()$`\"'= . You can add an =\= to their front to quote
+    them with a few exceptions. Like: =\&= .
+* Parameters
+  - Words that have other meanings. Parameters can be denoted a name, a
+    number or a special character.
+  - E.g. =Mypara=, =2=, =@=.
+  - A parameter is *set* if it has an assigned value.
+  - You can assign a value to an self-declared parameter using ===.
+  - E.g. =Mypara=233=.
+** Parameter Expansion
+   - Invoke the not literal meaning in a parameter.
+   - To expand a parameter, enclose a parameter in a pair of
+     braces precended by a =$=.
+   - E.g. =${Myvar}=
+   - You may omit the braces if there are no spaces or tabs inside the name.
+#+begin_src shell
+Mypara=233
+echo ${Mypara} # equals to echo $Mypara
+#+end_src
+** Shell variables
+   - A *variable* is a parameter denoted by a name. E.g. =Myvar=.
+   - Environment variables: E.g. =HOME=.
+   - Reserved words: they are usually commands in Shell. You
+     shouldn't use these words to name your variables. E.g. =if=, =case=,
+     =while=, etc...
+
+** Positional parameters
+   - A *positional parameter* is a parameter denoted by a
+     number. E.g. =2=.
+   - These are used when passing arguments to our scripts.
+   - *Exception:* =0= is not a positional parameter, but a *special
+     parameter* mentioned in the following section.
+
+#+begin_src shell
+#!/bin/sh
+echo $0
+echo $1
+# Name this to pos.sh and try this with ./pos.sh aug1
+#+end_src
+** Special parameters
+   - A special parameter is a parameter denoted by a special
+     character. E.g. =@=, =#=, =?=, etc...
+   - Guess what all these parameters are about!!! [[https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_05_02][Answer here]].
+* Command Substitution
+   - Command substitution allows the output of a command to be
+     substituted in place of the command itself.
+   - We use =$()= or =``= to perform the substitution. See the example
+     below:
+#+begin_src shell
+#!/bin/sh
+all_my_files=`ls -l` # the value is the output of "ls -l"
+echo $all_my_files
+#+end_src
+* Exit status
+ - When we execute a script or use a command, it runs on a subprocess of
+   your interactive shell.
+ - After a script or command sucessfully executes or comes across some
+   errors, it sets the *exit status*, which may affect the behavior of
+   the next script or command.
+ - =0=: everything is fine. It equals to *true*.
+ - =1= or non-zero: something goes wrong. It equals to *false*.
+** =exit=
+   It sets the exit status of the shell(the current subprocess) to a
+   number.
+#+begin_src sh
+# successful_script.sh
+echo "This is a sucessfully executed script!"
+exit 0
+#+end_src
+  - It's a good practice that you always set the exit status in your scripts.
+* Pipelines
+  - A *pipeline* is a sequence of one or more commands separated by the
+    control operator '=|='.
+  - For each command but the last, the shell shall connect the
+    standard output of the command to the standard input of the next
+    command.
+ #+begin_src sh
+find /tmp -name core -type f -print | xargs /bin/rm -f
+# find files named core in or below the directory /tmp and delete them.
+ #+end_src
+** Special forms (lists)
+ - Special forms of lists will also evaluate the exit status of the
+   last command.
+ - And (control operator is '=&&=')
+#+begin_src sh
+true && echo "foo" && echo "bar"
+false && echo "Nah!"
+ #+end_src
+ - Or (control operator is '=||=')
+#+begin_src  sh
+true || echo foo && echo bar
+#+end_src
+ - Asynchronous (control operator is '=&=')
+#+begin_src  sh
+wc file > output & echo "Asynchronous word count"
+#+end_src
+** Multiline commands??
+    - As mentioned in *Literals*, we have a few exceptions with
+    backslash(=\=) quoting.
+    - The most important case is =\n=. If a =\= precends a =\n=, it means *line-continuation*.
+    - we can use this feature with lists to write something similar to:
+ #+begin_src shell
+ echo "First command" && \
+ echo "Second command"
+ # the above equals to echo "First command" && echo "Second command"
+ #+end_src
+* Redirection
+** File descriptor
+   - An abstract indicator used to access a file or other input/output
+     resource.
+   - =0=: stdin
+   - =1=: stdout
+   - =2=: stderr
+** Redirecting output
+#+begin_src sh
+echo "I love Linux" > f1
+cat f1 1> f2 # it equals to cat f1 > f2
+cat f2
+#+end_src
+#+begin_src sh
+cat nonexistingfile 2>/dev/null
+# redirect the stderr to /dev/null
+#+end_src
+** Appending redirecting output
+#+begin_src sh
+echo "I love Linux" > f3
+echo "I love Unix" > f4
+cat f3 1>> f4 # it equals to cat f3 >> f4
+cat f4
+#+end_src
+** What happened?
+- Compose a script with file mentioned above:
+#+begin_src sh
+#!/bin/sh
+cat f1
+cat f5
+#+end_src
+- Then compare these two:
+#+begin_src sh
+./test 1>f6 2>f6
+./test 1>f6 2>&1
+#+end_src
+** Redirecting input
+#+begin_src sh
+read x1 # type "I love Unix"
+echo $x1
+read x2 < f1
+echo $x2
+#+end_src
+* Condition
+** =test= / =[]=
+   =test= checks the file type and compare values. It evaluates the
+   given expression and set the corresponding exit status.
+#+begin_src sh
+[ 2 -gt 1 ] && echo "2 is bigger than 1." # it equals to test 2 -gt 1 && echo "2>1"
+[ 1 -gt 2 ] && echo "1 is bigger than 2."
+[ -f ~/file ] && echo "File exists!!!"
+#+end_src
+** if, fi / while, do, done
+#+begin_src sh
+#!/bin/sh
+if [ -f file ]
+then
+echo "File exists"
+else
+echo "File doesn't exist"
+fi
+#+end_src
+#+begin_src sh
+#!/bin/sh
+while read x
+do
+ x="My name is ${x}."
+ echo $x
+done < names
+#+end_src
+** case, esac
+#+begin_src sh
+#!/bin/sh
+read $name
+case $name in
+foo | bar)
+echo "Hey!";;
+*)
+echo "Hello!";;
+esac
+#+end_src
+* Arithmetic Expansion
+- Arithmetic expansion provides a mechanism for evaluating an
+  arithmetic expression and substituting its value.
+#+begin_src shell
+# i-really-love-linux.sh
+#!/bin/sh
+x=100
+while [ $x -gt 0 ]
+do
+  echo "I love Linux!"
+  x=$(($x-1))
+done
+#+end_src
+* Other common scripting utilities
+** =sed=
+#+begin_src shell
+sed 's/regex/replace/g' file # Replace all occurrences of an extended regular expression in a file, and print the result
+sed '/line_pattern/d' filename # Delete lines matching the line pattern
+#+end_src
+** =grep=
+- g/re/p in =ed=
+- =grep= will print lines that match patterns.
+#+begin_src shell
+grep linux path/to/file # search for the line that matches "linux" in a file
+grep -Hn linux path/to/file # print file name with corresponding line number for lines matching "linux"
+grep -RIn linux . # search for a pattern recursively in the current directory, ignoring non-text files.
+#+end_src
+** =awk=
+#+begin_src sh
+awk '/something/ {print $2}' file # Print the second column of the lines containing "something" in a space-separated file
+#+end_src
+* Reference
+- [[https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_01][The Open Group Base Specifications]]
+- [[https://hyperpolyglot.org/unix-shells][Hyperpolygot - Unix Shells]]

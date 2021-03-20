@@ -1,0 +1,21 @@
+* Smake
+** Background
+*** POSIX shell scripting
+If you know little about shell scripting, please refer to the additional material(introduction to shell scripting) in the same directory, before you start.
+** Prerequisites
+    - A Unix or Unix-like environment
+    - Basic to intermediate knowledge of Unix or Unix-like system
+    - =dash= (preferrable) or =bash=
+    - A command line text-editor(Optional but recommended).
+** Requirements
+    - Implement a simple make utility with POSIX shell scripts.
+    - You may use any other Unix utilities(grep, sed, awk, etc...). However, DO NOT USE NON-POSIX COMPILANT SHELLS AND THEIR EXTENSIONS.
+    - For more information, refer to =Smake.md= in the same directory.
+** Stuck?
+  d  If you need any help, for built-in commands, refer to your shell's
+    man page. E.g. =man dash=. For others, refer to their own man page.
+*** =checkbashisms=
+    If you would like to use =bash= for testing, i.e. invoking =bash= with =#!/bin/sh=, though =bash= will try to mimic POSIX shell as closely as possible, 
+    there are still high chances that you write down some bash-only scripts, a.k.a bashism.
+    This command =checkbashisms= identify the code that is bashism in a script. It's a very useful
+    command if you would like to ensure the *purity* of your scripts.
