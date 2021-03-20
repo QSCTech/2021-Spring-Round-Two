@@ -1,4 +1,5 @@
 * Smake
+*Author* : Allosaurus(dinoallo@zju.edu.cn) 
 ** Background
 *** POSIX shell scripting
 If you know little about shell scripting, please refer to the additional material(introduction to shell scripting) in the same directory, before you start.
