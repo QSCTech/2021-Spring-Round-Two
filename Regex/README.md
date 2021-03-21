@@ -82,7 +82,7 @@ Feb 07 23:16:30 haokangde.com sshd[483]: Disconnected form invalid user preuba 7
 
 你有很多方法表示数字。其实 [0123456789] 可以用 [0-9] 来表示。中间的横杠，你可以理解为中文的“到”或者英文的“to”。
 
-有些名词解释喜欢说安卓的，他们不加版本号，加的是代号。比如 Andorid P啊，Android O啊，甚至以前的 Android Marshmallow.
+有些名词解释喜欢说安卓的，他们不加版本号，加的是代号。比如 Android P啊，Android O啊，甚至以前的 Android Marshmallow.
 
 好在更牛的是，英文也可以用中括号。你可以用[a-x]表示从a到x的字母。甚至可以 [0-9a-Z] 表示从0到9或者大小写都算进去的a到Z。
 
@@ -163,7 +163,7 @@ Feb 07 23:16:30 haokangde.com sshd[483]: Disconnected form invalid user preuba 7
 
 你的目的是找到那些说了安卓版本号的嫌疑人。
 
-请写一个正则表达式，能够匹配所有安卓系统和版本号。例如，Andorid P， android 5，Android 1.6 ,android Marshmallow等，都应该被成功匹配。你需要自主找到所有的安卓版本号。非安卓版本号都不应该被匹配。
+请写一个正则表达式，能够匹配所有安卓系统和版本号。例如，Android P， android 5，Android 1.6 ,android Marshmallow等，都应该被成功匹配。你需要自主找到所有的安卓版本号。非安卓版本号都不应该被匹配。
 
 #### Q2：
 
@@ -266,7 +266,7 @@ Feb 07 23:16:27 haokangde.com sshd[481]: Disconnected from invalid user compta 6
 ```python
 import re
 s='hello 1234567 world'
-res = re.match('he.*?(\d).*rld$',s)
+res = re.match('he.*?(\d+)\d.*rld$',s)
 print(res.group(1))
 // 结果：123456
 ```
