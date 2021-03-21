@@ -28,7 +28,7 @@
 | 02   | Back End, Let's Go!         | `Backend`   | 自愿卷(@OE-Heart) / 巧克力(@RalXYZ) |
 | 03   | Random Timer                | `Frontend`  | Suse(@s223568907)                   |
 | 04   | Problem for iOS             | `iOS`       | 添砖(@Cupcake416)                   |
-| 05   | 正则表达式                  | `Regex`     | 三个(@QSCTech-Sange)                |
+| 05   | Big Detecive                | `Regex`     | 三个(@QSCTech-Sange)                |
 | 06   | Smake                       | `Smake`     | 异特龙(@dinoallo）                  |
 | 07   | Gold Miner                  | `GoldMiner` | Switch（@Enzymii)                   |
 
