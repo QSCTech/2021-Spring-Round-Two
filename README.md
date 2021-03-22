@@ -24,13 +24,13 @@
 
 | 编号 | 试题名称                    | 文件夹      | 负责人                              |
 | ---- | --------------------------- | ----------- | ----------------------------------- |
-| 01   | Problem for Android         | `Android`   | 保安(@Deluxurous)                   |
-| 02   | Back End, Let's Go!         | `Backend`   | 自愿卷(@OE-Heart) / 巧克力(@RalXYZ) |
-| 03   | Random Timer                | `Frontend`  | Suse(@s223568907)                   |
-| 04   | Problem for iOS             | `iOS`       | 添砖(@Cupcake416)                   |
-| 05   | Big Detecive                | `Regex`     | 三个(@QSCTech-Sange)                |
-| 06   | Smake                       | `Smake`     | 异特龙(@dinoallo）                  |
-| 07   | Gold Miner                  | `GoldMiner` | Switch（@Enzymii)                   |
+| 01   | Problem for Android         | `Android`   | 保安([@Deluxurous](https://github.com/Deluxurous)) |
+| 02   | Back End, Let's Go!         | `Backend`   | 自愿卷([@OE-Heart](https://github.com/OE-Heart)) / 巧克力([@RalXYZ](https://github.com/RalXYZ)) |
+| 03   | Random Timer                | `Frontend`  | Suse([@s223568907](https://github.com/s223568907))                   |
+| 04   | Problem for iOS             | `iOS`       | 添砖([@Cupcake416](https://github.com/Cupcake416))                   |
+| 05   | Big Detecive                | `Regex`     | 三个([@QSCTech-Sange](https://github.com/QSCTech-Sange))                |
+| 06   | Smake                       | `Smake`     | 异特龙([@dinoallo](https://github.com/dinoallo))                  |
+| 07   | Gold Miner                  | `GoldMiner` | Switch([@Enzymii](https://github.com/Enzymii))                   |
 
 - 每位面试者需要作答**两道题**，其中需**至少一题**为 `05` / `06` / `07` 其中一道。
 - 在阅读完题目具体描述后，选择最感兴趣的问题完成，如果部分题目对你来说太容易，建议选择其他你不熟悉的。
