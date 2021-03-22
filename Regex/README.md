@@ -277,17 +277,17 @@ print(res.group(1))
 
 还有些有趣的关于正则表达式的讨论
 
-[正则表达式30分钟入门教程](https://deerchao.cn/tutorials/regex/regex.htm?fileGuid=3KhKJxP3DQDHPvvV)
+- [正则表达式30分钟入门教程](https://deerchao.cn/tutorials/regex/regex.htm?fileGuid=3KhKJxP3DQDHPvvV)
 
-[正则表达式判断素数](https://www.noulakaz.net/2007/03/18/a-regular-expression-to-check-for-prime-numbers/?fileGuid=3KhKJxP3DQDHPvvV)
+- [正则表达式判断素数](https://www.noulakaz.net/2007/03/18/a-regular-expression-to-check-for-prime-numbers/?fileGuid=3KhKJxP3DQDHPvvV)
 
-[匹配 email 地址](https://www.regular-expressions.info/email.html?fileGuid=3KhKJxP3DQDHPvvV)
+- [匹配 email 地址](https://www.regular-expressions.info/email.html?fileGuid=3KhKJxP3DQDHPvvV)
 
-[图形化展示正则表达式](https://jex.im/regulex/#!flags=&re=%5E(a%7Cb)*%3F%24?fileGuid=3KhKJxP3DQDHPvvV)
+- [图形化展示正则表达式](https://jex.im/regulex/#!flags=&re=%5E(a%7Cb)*%3F%24?fileGuid=3KhKJxP3DQDHPvvV)
 
-[正则表达式习题1](https://www.hackerrank.com/domains/regex?filters[subdomains][]=re-introduction&fileGuid=3KhKJxP3DQDHPvvV)
+- [正则表达式习题1](https://www.hackerrank.com/domains/regex?filters[subdomains][]=re-introduction&fileGuid=3KhKJxP3DQDHPvvV)
 
-[正则表达式习题2](https://regexone.com/problem?fileGuid=3KhKJxP3DQDHPvvV)
+- [正则表达式习题2](https://regexone.com/problem?fileGuid=3KhKJxP3DQDHPvvV)
 
 Enjoy the world with Regex!  ：）
 
@@ -299,17 +299,14 @@ Enjoy the world with Regex!  ：）
 
 你获得了连接上你的服务器的所有人的联系方式！现在，你愿意分享你的好康的东西给他们。你收集了你的粉丝们的手机号码，你想知道他们来自哪儿。假定我们的手机号书写有如下格式。左边是源号码，右边是你想要返回的字符串。
 
-415-555-1234	    415
-
-650-555-2345	    650
-
-(416)555-3456	    416
-
-202 555 4567      	202
-
-4035555678	        403
-
-1 416 555 9292		416
+|  Telephone                    | 捕获组     |
+| ------------------------------| ---------- |
+| `415-555-1234`                | `415`      |
+| `650-555-2345 `               | `650`      |
+| `(416)555-3456`               | `416`      |
+| `202 555 4567 `               | `202`      |
+| `4035555678`                  | `403`      |
+| `1 416 555 9292`              | `416`      |
 
 #### Q2:
 
@@ -319,19 +316,15 @@ Enjoy the world with Regex!  ：）
 
 例如：
 
-tom@hogwarts.com	                                           tom	                hogwarts
-
-tom.riddle@hogwarts.com             	               tom.riddle	hogwarts
-
-tom.riddle+regexone@hogwarts.com	       tom.riddle	hogwarts
-
-tom@hogwarts.eu.com	                                   tom                 hogwarts
-
-potter@hogwarts.com	                                       potter	        hogwarts
-
-harry@hogwarts.com	                                       harry	            hogwarts
-
-hermione+regexone@hogwarts.com	           hermione	    hogwarts
+|  Telephone                         | 捕获组                  |
+| -----------------------------------| ----------------------- |
+| `tom@hogwarts.com`                 | `tom` `hogwarts`        |
+| `tom.riddle@hogwarts.com`          | `tom.riddle` `hogwarts` |
+| `tom.riddle+regexone@hogwarts.com` | `tom.riddle` `hogwarts` |
+| `tom@hogwarts.eu.com`              | `tom` `hogwarts`        |
+| `potter@hogwarts.com`              | `potter` `hogwarts`     |
+| `harry@hogwarts.com`               | `harry` `hogwarts`      |
+| `hermione+regexone@hogwarts.com`   | `hermione` `hogwarts`   |
 
 #### Q3:
 
@@ -340,14 +333,14 @@ hermione+regexone@hogwarts.com	           hermione	    hogwarts
 你觉得直接通过访问服务器来康你的好康的不太优雅。你想用一个网页的形式展示一下。
 
 你写过网页吗？网页的最最最基础是 HTML。它由标签（<tag>）组成，如果你不了解前端的话，其实也没有关系。你的目的是提取所有的标签名。就像下面这样。
+   
+|  HTML Tag                                     | 捕获组     |
+| -------------------------------------------- -| ---------- |
+| `<a>This is a link</a>`                       | `a`        |
+| `<a href='https://regexone.com'>Link</a> `    | `a`        |
+| `<div class='test_style'>Test</div>`          | `div`      |
+| `<div>Hello <span>world</span></div>`         | `div`      |
 
-<a>This is a link</a>	                                                a
-
-<a href='https://regexone.com'>Link</a>     	a
-
-<div class='test_style'>Test</div>	                    div
-
-<div>Hello <span>world</span></div>	            div
 
 #### Q4：
 
@@ -355,11 +348,12 @@ hermione+regexone@hogwarts.com	           hermione	    hogwarts
 
 举例来说，你的正则表达式应匹配如下字符串，并捕获文件名和后缀名。
 
-img0912.jpg	                          img0912                            jpg
-
-updated_img0912.png	      updated_img0912       png
-
-favicon.gif	                              favicon                              gif
+|  File Name                         | 捕获组                  |
+| -----------------------------------| ----------------------- |
+| `img0912.jpg`                      | `img0912` `jpg`         |
+| `updated_img0912.png`              | `updated_img0912` `png` |
+| `favicon.gif`                      | `favicon` `gif`         |
+                                                                 
 
 注意，以下字符串不能被匹配！
 
@@ -390,29 +384,11 @@ favicon.gif	                              favicon                              g
 
 你做了安卓模块的题目了吗？在安卓开发的时候，经常需要看开发日志。有些开发日志是重要的，有些则可以被忽略。我们需要提取重要的内容。
 
-例如，对字符串
-
-E/( 1553):   at widget.List.makeView(ListView.java:1727)
-
-捕获下面三组
-
-makeView ListView.java 1727
-
-同理
-
-E/( 1553):   at widget.List.fillDown(ListView.java:652)
-
-捕获下面三组
-
-fillDown ListView.java 652
-
-对
-
-E/( 1553):   at widget.List.fillFrom(ListView.java:709)
-
-捕获下面三组
-
-fillFrom ListView.java 709
+|  log                                                          | 捕获组                            |
+| --------------------------------------------------------------| --------------------------------- |
+| `E/( 1553):   at widget.List.makeView(ListView.java:1727)`    | `makeView` `ListView.java` `1727` |
+| `E/( 1553):   at widget.List.fillDown(ListView.java:652)`     | `fillDown`  `ListView.java` `652` |
+| `E/( 1553):   at widget.List.fillFrom(ListView.java:709)`     | `fillFrom` `ListView.java` `709`  |
 
 这些字符串不能被匹配
 
