@@ -373,45 +373,16 @@ favicon.gif	                              favicon                              g
 
 网络！网络！网络！网络有协议、端口号...哦天呢，网络可真神奇！这节课的重点不是告诉你协议、域名、端口号的作用（当然鼓励你查一查做），而是给你一个统一资源定位符（URL），来请你提取相应的协议、域名、端口号。
 
-我们来对
+对左边的字符串，相应捕获成右边的格式。
 
-ftp://file_server.com:21/top_secret/life_changing_plans.pdf
 
-捕获
-
-ftp              file_server.com            21
-
-对
-
-https://regexone.com/lesson/introduction#section
-
-捕获
-
-https         regexone.com
-
-对
-
-file://localhost:4040/zip_file
-
-捕获
-
-file              localhost               4040
-
-对
-
-https://s3cur3-server.com:9999/
-
-捕获
-
-https          s3cur3-server.com         9999
-
-对
-
-market://search/angry%20birds
-
-捕获
-
-market search
+|  URL                                                          | 捕获组                            |
+| --------------------------------------------------------------| --------------------------------- |
+| `ftp://file_server.com:21/top_secret/life_changing_plans.pdf` | `ftp` `file_server.com ` `21`     |
+| `https://regexone.com/lesson/introduction#section`            | `https`  `regexone.com`           |
+| `file://localhost:4040/zip_file`                              | `file` `localhost` `4040`         |
+| `https://s3cur3-server.com:9999/`                             | `https``s3cur3-server.com` `9999` |
+| `market://search/angry%20birds`                               | `market` `search`                 |
 
 #### Q6:
 
